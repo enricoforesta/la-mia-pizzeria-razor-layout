@@ -7,10 +7,69 @@
     {
         return $"{myName} - {mySurname}";
     }
+
+    int GetSomma(int n)
+    {
+        int result = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            result += i;
+        }
+        return result;
+    }
+
+    int CountCharacter(string phrase, string character)
+    {
+        int count = 0;
+        for (int i = 0; i < phrase.Length; i++)
+        {
+            if (phrase[i].ToString() == character) count++;
+        }
+        return count;
+    }
+
+    List<int> CreateList()
+    {
+        List<int> lista = new List<int>();
+        Random rnd = new Random();
+
+        for (int i = 0; i < 20; i++)
+        {
+            lista.Add(rnd.Next(1, 91));
+        }
+        return lista;
+    }
 }
 
 <div class="text-center">
     <h2 class="fs-1">@FullName()</h2>
+    <span> La somma dei numeri è: @GetSomma(100)</span>
+    @{
+        string frase = "nel mezzo del cammin di nostra vita";
+        string carattere = "a";
+    }
+    <h2> Nella frase "@frase" ci sono @CountCharacter(frase, carattere) @carattere </h2>
+
+    <div>
+        @{
+            var lista = CreateList().Where(num => num >= 20 && num <= 70).ToList();
+            for (int i = 0; i < lista.Count; i++)
+            {
+                @lista[i]
+                if (i < lista.Count - 1)
+                {
+                    @(", ");
+                }
+            }
+        }
+    </div>
+
+    <h2>@DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")</h2>
+
+    <h2>Data di 7 giorni fa: @DateTime.Now.AddDays(-7).ToString("dddd, dd MMMM yyyy")</h2>
+    <h2>Oggi è: @DateTime.Now.ToString("dddd")</h2>
+    <h2>Data tra un anno: @DateTime.Now.AddYears(1).ToString("dddd, dd MMMM yyyy")</h2>
+</div>
 </div>
 
 
