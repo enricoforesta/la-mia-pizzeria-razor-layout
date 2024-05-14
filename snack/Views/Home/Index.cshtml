@@ -28,12 +28,12 @@
         return count;
     }
 
-    List<int> CreateList()
+    List<int> CreateList(int n)
     {
         List<int> lista = new List<int>();
         Random rnd = new Random();
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < n; i++)
         {
             lista.Add(rnd.Next(1, 91));
         }
@@ -52,7 +52,7 @@
 
     <div>
         @{
-            var lista = CreateList().Where(num => num >= 20 && num <= 70).ToList();
+            var lista = CreateList(20).Where(num => num >= 20 && num <= 70).ToList();
             for (int i = 0; i < lista.Count; i++)
             {
                 @lista[i]
@@ -70,7 +70,7 @@
     <h2>Oggi è: @DateTime.Now.ToString("dddd")</h2>
     <h2>Data tra un anno: @DateTime.Now.AddYears(1).ToString("dddd, dd MMMM yyyy")</h2>
 </div>
-</div>
+
 
 
 
