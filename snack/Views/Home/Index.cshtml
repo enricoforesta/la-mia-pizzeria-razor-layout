@@ -55,11 +55,11 @@
             var lista = CreateList(20).Where(num => num >= 20 && num <= 70).ToList();
             for (int i = 0; i < lista.Count; i++)
             {
-                @lista[i]
-                if (i < lista.Count - 1)
+                <span> @lista[i] </span>
+                @*if (i < lista.Count - 1)
                 {
                     @(", ");
-                }
+                }*@
             }
         }
     </div>
